@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Layout, Container, PageHeader } from "@/components/layout";
 import {
   Card,
@@ -7,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Clock, Calendar, TrendingUp, User } from "lucide-react";
+import { Clock, Calendar, TrendingUp, User, ArrowRight } from "lucide-react";
 
 // Mock data para demonstração
 const mockUser = {
@@ -51,10 +52,14 @@ export default function EmployeeDashboardPage() {
                 className="w-full"
                 size="lg"
                 variant={mockStats.isClockedIn ? "destructive" : "default"}
+                asChild
               >
-                {mockStats.isClockedIn
-                  ? "Registrar Saída"
-                  : "Registrar Entrada"}
+                <Link href="/clock">
+                  {mockStats.isClockedIn
+                    ? "Registrar Saída"
+                    : "Registrar Entrada"}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </CardContent>
           </Card>
