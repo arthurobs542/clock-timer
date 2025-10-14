@@ -1,9 +1,11 @@
 # Pull Request
 
 ## Descrição
+
 <!-- Descreva brevemente o que este PR faz -->
 
 ## Tipo de Mudança
+
 - [ ] 🐛 Bug fix (mudança que corrige um problema)
 - [ ] ✨ Nova feature (mudança que adiciona funcionalidade)
 - [ ] 💄 Style (mudança que não afeta a lógica do código)
@@ -14,6 +16,7 @@
 - [ ] 🔧 Chore (mudanças em ferramentas, configurações, etc.)
 
 ## Checklist
+
 - [ ] Meu código segue as convenções de estilo do projeto
 - [ ] Fiz uma auto-revisão do meu código
 - [ ] Comentei partes complexas do código
@@ -23,10 +26,13 @@
 - [ ] Qualquer mudança dependente foi mergeada e publicada
 
 ## Screenshots (se aplicável)
+
 <!-- Adicione screenshots para ajudar a explicar sua mudança -->
 
 ## Testes
+
 <!-- Descreva os testes que você executou para verificar suas mudanças -->
 
 ## Informações Adicionais
+
 <!-- Adicione qualquer outra informação relevante sobre o PR -->

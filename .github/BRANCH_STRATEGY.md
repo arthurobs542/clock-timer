@@ -3,10 +3,12 @@
 ## Estrutura de Branches
 
 ### Branches Principais
+
 - **`main`** - Branch de produção, sempre estável
 - **`develop`** - Branch de desenvolvimento, integração de features
 
 ### Branches de Feature
+
 - **`feature/nome-da-feature`** - Novas funcionalidades
   - `feature/admin-dashboard` - Dashboard do administrador
   - `feature/schedule-management` - Gerenciamento de escalas
@@ -15,28 +17,34 @@
   - `feature/authentication-backend` - Autenticação com backend
 
 ### Branches de Hotfix
+
 - **`hotfix/nome-do-fix`** - Correções urgentes em produção
   - `hotfix/urgent-fixes` - Correções críticas
 
 ### Branches de Style
+
 - **`style/nome-da-melhoria`** - Melhorias de UI/UX
   - `style/ui-improvements` - Melhorias na interface
 
 ### Branches de Refactor
+
 - **`refactor/nome-da-refatoracao`** - Refatoração de código
   - `refactor/code-optimization` - Otimização de código
 
 ### Branches de Documentação
+
 - **`docs/nome-da-documentacao`** - Documentação
   - `docs/documentation` - Documentação do projeto
 
 ### Branches de Teste
+
 - **`test/nome-do-teste`** - Testes
   - `test/unit-tests` - Testes unitários
 
 ## Convenções de Commits
 
 ### Formato
+
 ```
 <tipo>(<escopo>): <descrição>
 
@@ -46,6 +54,7 @@
 ```
 
 ### Tipos de Commit
+
 - **`feat`** - Nova funcionalidade
 - **`fix`** - Correção de bug
 - **`style`** - Mudanças de formatação, espaços, etc.
@@ -58,6 +67,7 @@
 - **`build`** - Mudanças no sistema de build
 
 ### Escopos (opcional)
+
 - `auth` - Autenticação
 - `clock` - Sistema de ponto
 - `admin` - Dashboard administrativo
@@ -69,6 +79,7 @@
 ### Exemplos de Commits
 
 #### Feature
+
 ```bash
 feat(clock): adiciona rastreamento GPS no clock in/out
 feat(admin): implementa dashboard de estatísticas
@@ -76,6 +87,7 @@ feat(auth): adiciona validação de email no cadastro
 ```
 
 #### Fix
+
 ```bash
 fix(clock): corrige cálculo de horas trabalhadas
 fix(ui): corrige layout responsivo no mobile
@@ -83,6 +95,7 @@ fix(auth): corrige validação de senha
 ```
 
 #### Style
+
 ```bash
 style(ui): melhora espaçamento dos cards
 style(clock): ajusta cores dos botões de status
@@ -90,6 +103,7 @@ style(admin): melhora tipografia das tabelas
 ```
 
 #### Refactor
+
 ```bash
 refactor(clock): extrai lógica de cálculo para utils
 refactor(auth): simplifica validação de formulários
@@ -97,6 +111,7 @@ refactor(api): melhora estrutura das rotas
 ```
 
 #### Docs
+
 ```bash
 docs: adiciona guia de instalação
 docs(api): documenta endpoints de autenticação
@@ -104,6 +119,7 @@ docs(clock): adiciona exemplos de uso
 ```
 
 #### Test
+
 ```bash
 test(clock): adiciona testes para ClockInOutButton
 test(auth): adiciona testes para validação
@@ -113,6 +129,7 @@ test(utils): adiciona testes para formatação de data
 ## Fluxo de Trabalho
 
 ### 1. Desenvolvimento de Feature
+
 ```bash
 # Criar branch a partir de develop
 git checkout develop
@@ -132,6 +149,7 @@ git merge feature/nova-funcionalidade
 ```
 
 ### 2. Hotfix Urgente
+
 ```bash
 # Criar branch a partir de main
 git checkout main
@@ -150,6 +168,7 @@ git merge hotfix/correcao-urgente
 ```
 
 ### 3. Release
+
 ```bash
 # Criar branch de release
 git checkout develop
