@@ -88,26 +88,37 @@
         "task": "Constants & Utils",
         "date": "2025-01-27",
         "description": "Criação de constantes e utilitários do sistema"
-      }
-    ],
-    "inProgress": [
+      },
       {
         "task": "Layout Base",
-        "description": "Criação do layout responsivo base do sistema"
-      }
-    ],
-    "pending": [
+        "date": "2025-01-27",
+        "description": "Criação do layout responsivo base com Header, Footer e Container"
+      },
+      {
+        "task": "Home Page",
+        "date": "2025-01-27",
+        "description": "Página inicial com hero section e funcionalidades"
+      },
+      {
+        "task": "Authentication Pages",
+        "date": "2025-01-27",
+        "description": "Páginas de login e cadastro com validação completa"
+      },
       {
         "task": "Employee Dashboard",
-        "description": "Implementação do dashboard do funcionário"
-      },
+        "date": "2025-01-27",
+        "description": "Dashboard básico do funcionário com estatísticas"
+      }
+    ],
+    "inProgress": [],
+    "pending": [
       {
         "task": "Admin Dashboard",
         "description": "Implementação do dashboard do administrador"
       },
       {
         "task": "Clock System",
-        "description": "Sistema de clock in/out"
+        "description": "Sistema de clock in/out funcional"
       },
       {
         "task": "Schedule Management",
@@ -118,12 +129,20 @@
         "description": "Sistema de relatórios"
       },
       {
-        "task": "Authentication",
-        "description": "Sistema de autenticação"
+        "task": "Authentication Backend",
+        "description": "Sistema de autenticação com backend"
       },
       {
         "task": "Database Integration",
         "description": "Integração com banco de dados"
+      },
+      {
+        "task": "File Upload System",
+        "description": "Sistema de upload de fotos"
+      },
+      {
+        "task": "Form Validation Enhancement",
+        "description": "Melhorar validação de formulários"
       }
     ]
   },
@@ -189,10 +208,7 @@
       "avatar",
       "dropdown-menu",
       "sheet",
-      "dialog"
-    ],
-    "toInstall": [
-      "calendar",
+      "dialog",
       "select",
       "textarea",
       "checkbox",
@@ -201,9 +217,17 @@
       "tabs",
       "accordion",
       "alert",
-      "toast",
+      "sonner",
       "progress",
       "skeleton"
+    ],
+    "toInstall": [
+      "calendar",
+      "date-picker",
+      "time-picker",
+      "file-upload",
+      "chart",
+      "data-table"
     ]
   },
   "errors": [],
@@ -212,17 +236,19 @@
     "Usando shadcn/ui com tema neutral",
     "Interfaces TypeScript criadas para todo o sistema",
     "Sistema responsivo para múltiplos dispositivos",
-    "Foco em micro empresas com funcionalidades essenciais"
+    "Foco em micro empresas com funcionalidades essenciais",
+    "Páginas de autenticação implementadas com validação",
+    "Upload de foto implementado no cadastro",
+    "Dashboard básico do funcionário criado"
   ],
   "nextSteps": [
-    "Criar layout base responsivo",
-    "Implementar sistema de autenticação",
-    "Criar dashboard do funcionário",
     "Criar dashboard do administrador",
-    "Implementar sistema de clock in/out",
+    "Implementar sistema de clock in/out funcional",
     "Adicionar gerenciamento de escalas",
     "Criar sistema de relatórios",
+    "Implementar autenticação com backend",
     "Integrar com banco de dados",
+    "Melhorar sistema de upload de fotos",
     "Adicionar testes",
     "Deploy da aplicação"
   ]

@@ -36,6 +36,7 @@ export function Header({ user }: HeaderProps) {
       name: "Dashboard",
       href: user?.role === "admin" ? "/admin" : "/employee",
     },
+    ...(user?.role === "employee" ? [{ name: "Ponto", href: "/clock" }] : []),
     ...(user?.role === "admin"
       ? [
           { name: "Escalas", href: "/admin/schedules" },
