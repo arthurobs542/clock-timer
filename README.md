@@ -6,7 +6,7 @@ Sistema de controle de ponto para micro empresas com dashboard para funcionário
 
 O Clock Timer é uma aplicação web moderna desenvolvida em Next.js que permite o controle eficiente de ponto de funcionários em micro empresas. O sistema oferece duas interfaces principais: uma para funcionários realizarem o clock in/out e visualizarem seus horários, e outra para administradores gerenciarem escalas e visualizarem relatórios.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 ### Dashboard do Funcionário
 
