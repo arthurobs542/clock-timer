@@ -17,6 +17,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Bell, Settings, LogOut, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { APP_CONFIG } from "@/lib/constants";
+import { NotificationCenter } from "@/components/notifications/NotificationCenter";
 
 interface HeaderProps {
   user?: {
@@ -36,7 +37,7 @@ export function Header({ user }: HeaderProps) {
       name: "Dashboard",
       href: user?.role === "admin" ? "/admin" : "/employee",
     },
-    ...(user?.role === "employee" ? [{ name: "Ponto", href: "/clock" }] : []),
+    { name: "Ponto", href: "/clock" },
     ...(user?.role === "admin"
       ? [
           { name: "Escalas", href: "/admin/schedules" },
@@ -87,12 +88,7 @@ export function Header({ user }: HeaderProps) {
         {/* Right side actions */}
         <div className="flex items-center space-x-4">
           {/* Notifications */}
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-5 w-5" />
-            <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 text-xs text-white flex items-center justify-center">
-              3
-            </span>
-          </Button>
+          <NotificationCenter />
 
           {/* User Menu */}
           {user ? (
@@ -130,6 +126,12 @@ export function Header({ user }: HeaderProps) {
                   <Link href="/profile" className="flex items-center">
                     <User className="mr-2 h-4 w-4" />
                     <span>Perfil</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/notifications" className="flex items-center">
+                    <Bell className="mr-2 h-4 w-4" />
+                    <span>Notificações</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
@@ -223,6 +225,14 @@ export function Header({ user }: HeaderProps) {
                       >
                         <User className="mr-2 h-4 w-4" />
                         Perfil
+                      </Link>
+                      <Link
+                        href="/notifications"
+                        className="flex items-center px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-muted"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <Bell className="mr-2 h-4 w-4" />
+                        Notificações
                       </Link>
                       <Link
                         href="/settings"

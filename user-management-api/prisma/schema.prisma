@@ -6,3 +6,116 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          String      @id @default(uuid())
+  name        String
+  email       String      @unique
+  phone       String
+  employeeId  String      @unique
+  password    String
+  avatar      String?
+  role        Role        @default(USER)
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  // Relacionamentos
+  clockRecords ClockRecord[]
+  notifications Notification[]
+  notificationSettings NotificationSettings?
+  
+  @@map("users")
+}
+
+model ClockRecord {
+  id          String      @id @default(uuid())
+  userId      String
+  clockIn     DateTime?
+  clockOut    DateTime?
+  breakStart  DateTime?
+  breakEnd    DateTime?
+  totalHours  Float?
+  date        DateTime    @default(now())
+  notes       String?
+  status      ClockStatus @default(ACTIVE)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  // Relacionamentos
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("clock_records")
+}
+
+model Notification {
+  id          String      @id @default(uuid())
+  userId      String
+  title       String
+  message     String
+  type        NotificationType
+  priority    NotificationPriority @default(MEDIUM)
+  isRead      Boolean     @default(false)
+  actionUrl   String?
+  metadata    Json?
+  createdAt   DateTime    @default(now())
+  readAt      DateTime?
+  
+  // Relacionamentos
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("notifications")
+}
+
+model NotificationSettings {
+  id              String      @id @default(uuid())
+  userId          String      @unique
+  email           Boolean     @default(true)
+  push            Boolean     @default(true)
+  clockReminder   Boolean     @default(true)
+  reportGenerated Boolean     @default(false)
+  systemUpdates   Boolean     @default(true)
+  securityAlerts  Boolean     @default(true)
+  scheduleChanges Boolean     @default(true)
+  passwordExpiry  Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  // Relacionamentos
+  user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("notification_settings")
+}
+
+enum Role {
+  USER
+  ADMIN
+  MANAGER
+}
+
+enum ClockStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum NotificationType {
+  CLOCK_REMINDER
+  CLOCK_IN
+  CLOCK_OUT
+  BREAK_START
+  BREAK_END
+  REPORT_GENERATED
+  SYSTEM_UPDATE
+  SECURITY_ALERT
+  SCHEDULE_CHANGE
+  PASSWORD_EXPIRY
+  GENERAL
+}
+
+enum NotificationPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}

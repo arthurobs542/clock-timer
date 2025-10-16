@@ -1,22 +1,81 @@
-import { body, validationResult } from 'express-validator';
+import { Request, Response, NextFunction } from "express";
+import { ZodSchema, ZodError } from "zod";
 
-export const validateUserCreation = [
-  body('name').isString().notEmpty().withMessage('Name is required'),
-  body('email').isEmail().withMessage('Valid email is required'),
-  body('phone').isString().notEmpty().withMessage('Phone number is required'),
-  body('employeeId').isString().notEmpty().withMessage('Employee ID is required'),
-  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
-  body('confirmPassword').custom((value, { req }) => {
-    if (value !== req.body.password) {
-      throw new Error('Passwords do not match');
+export const validate = (schema: ZodSchema) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    try {
+      schema.parse({
+        body: req.body,
+        query: req.query,
+        params: req.params,
+      });
+      next();
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const errorMessages = error.errors.map((err) => ({
+          field: err.path.join("."),
+          message: err.message,
+        }));
+
+        return res.status(400).json({
+          message: "Dados inválidos",
+          errors: errorMessages,
+        });
+      }
+
+      return res.status(500).json({
+        message: "Erro interno do servidor",
+      });
     }
-    return true;
-  }),
-  (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+  };
+};
+
+export const validateBody = (schema: ZodSchema) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    try {
+      req.body = schema.parse(req.body);
+      next();
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const errorMessages = error.errors.map((err) => ({
+          field: err.path.join("."),
+          message: err.message,
+        }));
+
+        return res.status(400).json({
+          message: "Dados inválidos",
+          errors: errorMessages,
+        });
+      }
+
+      return res.status(500).json({
+        message: "Erro interno do servidor",
+      });
     }
-    next();
-  },
-];
+  };
+};
+
+export const validateQuery = (schema: ZodSchema) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    try {
+      req.query = schema.parse(req.query);
+      next();
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const errorMessages = error.errors.map((err) => ({
+          field: err.path.join("."),
+          message: err.message,
+        }));
+
+        return res.status(400).json({
+          message: "Parâmetros de consulta inválidos",
+          errors: errorMessages,
+        });
+      }
+
+      return res.status(500).json({
+        message: "Erro interno do servidor",
+      });
+    }
+  };
+};
